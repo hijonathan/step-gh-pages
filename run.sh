@@ -37,11 +37,16 @@ then
   echo $WERCKER_GH_PAGES_DOMAIN > CNAME
 fi
 
-
-# setup branch
-branch="gh-pages"
-if [[ "$repo" =~ $WERCKER_GIT_OWNER\/$WERCKER_GIT_OWNER\.github\.(io|com)$ ]]; then
-	branch="master"
+# if directory provided, cd to it
+if [ -d "$WERCKER_GH_PAGES_BRANCH" ]
+then
+  branch="$WERCKER_GH_PAGES_BRANCH"
+else
+  # setup branch
+  branch="gh-pages"
+  if [[ "$repo" =~ $WERCKER_GIT_OWNER\/$WERCKER_GIT_OWNER\.github\.(io|com)$ ]]; then
+    branch="master"
+  fi
 fi
 
 
