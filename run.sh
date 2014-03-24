@@ -37,8 +37,8 @@ then
   echo $WERCKER_GH_PAGES_DOMAIN > CNAME
 fi
 
-# if directory provided, cd to it
-if [ -d "$WERCKER_GH_PAGES_BRANCH" ]
+# allow branch overrides
+if [ -n "$WERCKER_GH_PAGES_BRANCH" ]
 then
   branch="$WERCKER_GH_PAGES_BRANCH"
 else
