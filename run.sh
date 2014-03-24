@@ -22,7 +22,7 @@ info "using github repo \"$repo\""
 # remote path
 remote="https://$WERCKER_GH_PAGES_TOKEN@github.com/$repo.git"
 
-# if directory provided, cd to it
+# if base directory provided, cd to it
 if [ -d "$WERCKER_GH_PAGES_BASEDIR" ]
 then
   cd $WERCKER_GH_PAGES_BASEDIR
@@ -30,6 +30,12 @@ fi
 
 # remove existing commit history
 rm -rf .git
+
+# if source directory provided, cd to it
+if [ -d "$WERCKER_GH_PAGES_SRCDIR" ]
+then
+  cd $WERCKER_GH_PAGES_SRCDIR
+fi
 
 # generate cname file
 if [ -n $WERCKER_GH_PAGES_DOMAIN ]
